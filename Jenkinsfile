@@ -26,7 +26,7 @@ pipeline{
             environment{
                 tag_version = "${env.BUILD_ID}"
             }
-
+            
             steps{
                 withKubeConfig([credentialsId: 'kubeconfig']){
                     sh 'sed -i "s/{{TAG}}/$tag_version/g" ./k8s/deployment.yaml'
